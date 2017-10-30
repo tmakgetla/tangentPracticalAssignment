@@ -1,12 +1,18 @@
 package com.tangent.practicalassignment.presentation;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.framework.comms.WebUtils;
 import com.tangent.practicalassignment.framework.login.Security;
+import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
+import com.tangent.practicalassignment.presentation.login.LoginFragment;
 import com.tangent.practicalassignment.utils.AppCache;
 import com.tangent.practicalassignment.utils.AppConstants;
 
@@ -23,7 +29,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        navigateToLoginScreen();
         //init();
+    }
+
+    private void startFragment(Fragment fragment, int container, boolean replaceFrag){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if(replaceFrag){
+            fragmentTransaction.replace(container, fragment);
+        } else {
+            fragmentTransaction.add(container, fragment);
+        }
+        fragmentTransaction.commit();
+    }
+
+    public void navigateToLoginScreen(){
+        startFragment(LoginFragment.newInstance(this), R.id.fragment_container, false);
     }
 
     private void init(){
