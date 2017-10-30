@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.presentation.MainActivity;
@@ -18,6 +19,10 @@ import com.tangent.practicalassignment.presentation.interfaces.MainActivityInter
 public class LoginFragment extends Fragment {
     private MainActivity mainActivityInterface;
     private View rootView;
+
+    private EditText etUserName;
+    private EditText etPassword;
+
     public LoginFragment(){}
 
     public static LoginFragment newInstance(MainActivity mainActivityInterface){
@@ -35,5 +40,11 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        wireUpViews();
+    }
+
+    private void wireUpViews(){
+        etUserName = rootView.findViewById(R.id.et_user_name);
+        etPassword = rootView.findViewById(R.id.et_password);
     }
 }

@@ -23,7 +23,7 @@ import okhttp3.Headers;
 
 import static com.tangent.practicalassignment.utils.AppCache.okHttpClient;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityInterface{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         //init();
     }
 
-    private void startFragment(Fragment fragment, int container, boolean replaceFrag){
+    @Override
+    public void startFragment(Fragment fragment, int container, boolean replaceFrag){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if(replaceFrag){
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
     public void navigateToLoginScreen(){
         startFragment(LoginFragment.newInstance(this), R.id.fragment_container, false);
     }
