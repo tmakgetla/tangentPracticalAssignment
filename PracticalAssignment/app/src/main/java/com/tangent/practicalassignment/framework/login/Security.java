@@ -39,7 +39,6 @@ public class Security {
                 throw new IOException("Unexpected code " + response);
             }else {
                 String responseContent = response.body().string();
-                //objectConverter.getLoginDetails(response);
                 setApplictionSession(responseContent);
             }
         }
@@ -51,31 +50,4 @@ public class Security {
             AppCache.session_token = login.getToken();
         }
     }
-
-/*    private final OkHttpClient.Builder client;
-
-    {
-        client = new OkHttpClient.Builder();
-        client.authenticator(new Authenticator() {
-            @Override
-            public Request authenticate(Route route, Response response) throws IOException {
-                if (responseCount(response) >= 3) {
-                    return null; // If we've failed 3 times, give up. - in real life, never give up!!
-                }
-                String credential = Credentials.basic("pravin.gordhan", "pravin.gordhan");
-                return response.request().newBuilder().header("Authorization", credential).build();
-            }
-        });
-        client.connectTimeout(10, TimeUnit.SECONDS);
-        client.writeTimeout(10, TimeUnit.SECONDS);
-        client.readTimeout(30, TimeUnit.SECONDS);
-    }
-
-    private int responseCount(Response response) {
-        int result = 1;
-        while ((response = response.priorResponse()) != null) {
-            result++;
-        }
-        return result;
-    }*/
 }
