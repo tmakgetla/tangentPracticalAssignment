@@ -9,4 +9,5 @@ import android.support.v4.app.Fragment;
 public interface MainActivityInterface {
     void navigateToLoginScreen();
     void startFragment(Fragment fragment, int container, boolean replaceFrag);
+    void initConnection();
 }

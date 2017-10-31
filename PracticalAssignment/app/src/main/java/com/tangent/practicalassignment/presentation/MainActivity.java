@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         startFragment(LoginFragment.newInstance(this), R.id.fragment_container, false);
     }
 
-    private void init(){
+    @Override
+    public void initConnection(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
 
                     okHttpClient = security.client;
 
-                    WebUtils webUtils = new WebUtils();
-                    webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);
+/*                    WebUtils webUtils = new WebUtils();
+                    webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);*/
 
                 }catch (Exception e){
                     e.printStackTrace();
