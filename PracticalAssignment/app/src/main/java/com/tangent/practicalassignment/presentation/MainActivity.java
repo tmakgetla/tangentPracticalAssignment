@@ -13,6 +13,7 @@ import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.framework.comms.WebUtils;
 import com.tangent.practicalassignment.framework.login.Security;
 import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
+import com.tangent.practicalassignment.presentation.home.HomeFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
 import com.tangent.practicalassignment.utils.AppCache;
@@ -58,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     }
 
     @Override
+    public void navigateToHomeScreen(){
+        startFragment(HomeFragment.newInstance(this), R.id.fragment_container, true);
+    }
+
+    @Override
     public void initConnection(String userName, String password){
         final String varUserName = userName;
         final String varPassword = password;
@@ -72,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                     okHttpClient = security.client;
 
                     if(okHttpClient != null){
-                        navigateToEmployeesScreen();
+                        navigateToHomeScreen();
                     } else {
                         //Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
                     }

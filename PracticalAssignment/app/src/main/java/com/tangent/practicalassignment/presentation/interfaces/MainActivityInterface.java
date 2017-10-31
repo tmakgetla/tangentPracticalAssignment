@@ -11,4 +11,5 @@ public interface MainActivityInterface {
     void startFragment(Fragment fragment, int container, boolean replaceFrag);
     void initConnection(String userName, String password);
     void navigateToEmployeesScreen();
+    void navigateToHomeScreen();
 }
