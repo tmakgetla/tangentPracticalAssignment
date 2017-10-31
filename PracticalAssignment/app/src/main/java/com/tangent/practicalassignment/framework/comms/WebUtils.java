@@ -14,8 +14,8 @@ public class WebUtils {
     private static final OkHttpClient client = new OkHttpClient();
     private ObjectConverter objectConverter =  new ObjectConverter();
 
-    public void getEmployeesDetails(OkHttpClient httpClient, String anyURL, String sessionToken) throws Exception {
-        Request request = new Request.Builder().url(anyURL).header("Authorization", "Token " + sessionToken).build();
+    public void getEmployeesDetails(OkHttpClient httpClient, String url, String sessionToken) throws Exception {
+        Request request = new Request.Builder().url(url).header("Authorization", "Token " + sessionToken).build();
         Response response = httpClient.newCall(request).execute();
         if (!response.isSuccessful()) {
             throw new IOException("Unexpected code " + response);

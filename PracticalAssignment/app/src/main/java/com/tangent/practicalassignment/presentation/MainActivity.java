@@ -92,8 +92,4 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
             }
         }).start();
     }
-
-    private void toastFailedLogin(){
-        Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
-    }
 }
