@@ -14,13 +14,13 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/ic_profile"
-            android:text="login_string"/>
+            android:text="@string/employees"/>
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/position_data"/>
     </LinearLayout>
 
     <LinearLayout
@@ -32,12 +32,14 @@
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/birthdays"/>
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/Reviews"/>
     </LinearLayout>
 
     <LinearLayout
