@@ -5,4 +5,5 @@ package com.tangent.practicalassignment.presentation.login.interfaces;
  */
 
 public interface LoginInterface {
+    void validateCredentials();
 }

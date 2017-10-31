@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.framework.comms.WebUtils;
 import com.tangent.practicalassignment.framework.login.Security;
+import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
 import com.tangent.practicalassignment.utils.AppCache;
@@ -51,16 +53,29 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     }
 
     @Override
-    public void initConnection(){
+    public void navigateToEmployeesScreen(){
+        startFragment(EmployeesFragment.newInstance(this), R.id.fragment_container, true);
+    }
+
+    @Override
+    public void initConnection(String userName, String password){
+        final String varUserName = userName;
+        final String varPassword = password;
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Security security = new Security();
-                    security.createSecureConnection(AppConstants.LOGIN_URL,"pravin.gordhan", "pravin.gordhan");
+                    security.createSecureConnection(AppConstants.LOGIN_URL, varUserName, varPassword);
 
                     okHttpClient = security.client;
 
+                    if(okHttpClient != null){
+                        navigateToEmployeesScreen();
+                    } else {
+                        //Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
+                    }
 /*                    WebUtils webUtils = new WebUtils();
                     webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);*/
 
@@ -70,5 +85,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                 }
             }
         }).start();
+    }
+
+    private void toastFailedLogin(){
+        Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
     }
 }

@@ -76,13 +76,14 @@ public class LoginFragment extends Fragment implements LoginInterface{
         });
     }
 
+    @Override
     public void validateCredentials(){
         enteredUserName = etUserName.getText().toString();
         enteredPassword = etPassword.getText().toString();
         if(enteredUserName.equals("") || enteredPassword.equals("")){
             Toast.makeText(mainActivity, "Please fill all fields!", Toast.LENGTH_LONG).show();
         } else {
-            mainActivity.initConnection();
+            mainActivity.initConnection(enteredUserName,enteredPassword);
         }
     }
 }
