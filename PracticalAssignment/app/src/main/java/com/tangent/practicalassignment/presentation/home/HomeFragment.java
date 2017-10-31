@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.presentation.MainActivity;
-import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 
 /**
  * Created by Ans Tech on 31/10/2017.
