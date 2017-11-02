@@ -28,6 +28,8 @@ import static com.tangent.practicalassignment.utils.AppCache.okHttpClient;
 
 public class MainActivity extends AppCompatActivity implements MainActivityInterface{
 
+    private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
 
     @Override
     public void startFragment(Fragment fragment, int container, boolean replaceFrag){
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if(replaceFrag){
             fragmentTransaction.replace(container, fragment);
