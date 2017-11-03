@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/ll_employees"
         android:layout_width="fill_parent"
         android:layout_height="226dp"
-        android:background="@color/blueviolet">
+        android:layout_margin="@dimen/tile_margins"
+        android:background="@color/blueviolet"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_weight="08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_people"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:text="@string/employees"/>
     </LinearLayout>
 
     <LinearLayout
@@ -17,23 +33,55 @@
         android:layout_height="fill_parent">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/ll_statistics"
             android:layout_width="180dp"
             android:layout_height="fill_parent"
-            android:background="@color/fuchsia">
-        </LinearLayout>
+            android:background="@color/fuchsia"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/tile_margins"
+            android:layout_marginRight="@dimen/tile_margins"
+            android:layout_marginBottom="@dimen/tile_margins">
+            <ImageView
+                android:layout_weight="08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_chart"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:text="@string/staticstics"/>
+            </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
+                android:id="@+id/ll_position_data"
                 android:layout_width="fill_parent"
                 android:layout_height="154dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/tile_margins"
+                >
+                <ImageView
+                    android:layout_weight="08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_position"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:text="@string/position_data"/>
             </LinearLayout>
 
             <LinearLayout
@@ -41,18 +89,40 @@
                 android:layout_height="fill_parent">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="106dp"
+                    android:id="@+id/ll_profile"
+                    android:layout_width="126dp"
                     android:layout_height="fill_parent"
-                    android:background="@color/limegreen">
+                    android:background="@color/limegreen"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/tile_margins"
+                    android:layout_marginTop="@dimen/tile_margins"
+                    >
+                    <ImageView
+                        android:layout_weight="08"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_tile_profile"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="@color/white"
+                        android:text="@string/profile"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/crimson">
-                </LinearLayout>
+                    android:background="@color/crimson"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/tile_margins"
+                    android:layout_marginBottom="@dimen/tile_margins"
+                    android:layout_marginRight="@dimen/tile_margins"
+                    android:layout_marginLeft="@dimen/tile_margins"
+                    android:visibility="invisible"
+                    ></LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
