@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.presentation.MainActivity;
@@ -17,6 +18,11 @@ import com.tangent.practicalassignment.presentation.MainActivity;
 public class HomeFragment extends Fragment {
     private MainActivity mainActivity;
     private View rootView;
+    private LinearLayout llEmployees;
+    private LinearLayout llStatistics;
+    private LinearLayout llPostionData;
+    private LinearLayout llProfile;
+
     public HomeFragment(){}
 
     public static HomeFragment newInstance(MainActivity mainActivity){
@@ -39,8 +45,36 @@ public class HomeFragment extends Fragment {
     }
 
     private void wireUpViews(){
+        llEmployees = rootView.findViewById(R.id.ll_employees);
+        llStatistics = rootView.findViewById(R.id.ll_statistics);
+        llPostionData = rootView.findViewById(R.id.ll_position_data);
+        llProfile = rootView.findViewById(R.id.ll_profile);
     }
 
     private void setUpListeners(){
+        llEmployees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity.navigateToEmployeesScreen();
+            }
+        });
+        llPostionData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        llProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        llStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
