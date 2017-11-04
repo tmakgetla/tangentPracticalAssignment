@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if(replaceFrag){
             fragmentTransaction.replace(container, fragment);
+            fragmentTransaction.addToBackStack(null);
         } else {
             fragmentTransaction.add(container, fragment);
         }
@@ -93,5 +94,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                 }
             }
         }).start();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(fragmentManager.getBackStackEntryCount() > 1){
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

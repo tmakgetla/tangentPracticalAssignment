@@ -2,4 +2,5 @@
 <resources>
     <dimen name="tile_margins">5dp</dimen>
     <dimen name="tile_label">15dp</dimen>
+    <dimen name="recycler_padding">3dp</dimen>
 </resources>

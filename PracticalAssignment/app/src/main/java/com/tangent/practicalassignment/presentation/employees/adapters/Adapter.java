@@ -20,9 +20,9 @@ import java.util.List;
  * Created by Ans Tech on 3/11/2017.
  */
 
-public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private List<String> list ;
+    private List<String> list;
     public Context context;
     ViewHolder viewHolder;
     int lastPosition = -1;
@@ -39,24 +39,23 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public void onBindViewHolder(final ViewHolder viewHolder,
-                                 final int position ) {
+                                 final int position) {
 
         viewHolder.textView.setText(list.get(position));
         Picasso.with(context).load(R.drawable.ic_profile)
                 .into(viewHolder.imageView);
         viewHolder.textView.setOnClickListener(new
-                                                       View.OnClickListener() {
+        View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),
+                        "OnClick :" + list.get(position),
+                        Toast.LENGTH_SHORT).show();
 
-                                                           @Override
-                                                           public void onClick(View v) {
-                                                               Toast.makeText(v.getContext(),
-                                                                       "OnClick :" + list.get(position),
-                                                                       Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                                                           }
-                                                       });
-
-        if(position >lastPosition) {
+        if (position > lastPosition) {
 
             Animation animation = AnimationUtils.loadAnimation(context,
                     R.anim.up_from_bottom);

@@ -58,11 +58,15 @@ public class EmployeesFragment extends Fragment {
         arrayList();
         mAdapter = new Adapter(list, mainActivity);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     private void setUpListeners() {
+        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
 
     public void arrayList() {
