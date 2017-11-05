@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.presentation.MainActivity;
+import com.tangent.practicalassignment.utils.AppCache;
 
 /**
  * Created by Ans Tech on 31/10/2017.
@@ -55,6 +56,8 @@ public class HomeFragment extends Fragment {
         llEmployees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mainActivity.getEmployeesDetails();
+                while (AppCache.employees == null);
                 mainActivity.navigateToEmployeesScreen();
             }
         });

@@ -11,4 +11,5 @@
     <color name="limegreen">#32CD32</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
+    <color name="gainsboro">#DCDCDC</color>
 </resources>

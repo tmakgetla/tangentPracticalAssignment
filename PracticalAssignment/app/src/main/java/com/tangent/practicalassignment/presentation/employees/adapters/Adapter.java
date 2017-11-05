@@ -1,6 +1,6 @@
 package com.tangent.practicalassignment.presentation.employees.adapters;
 
-import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
 import com.tangent.practicalassignment.R;
-
-import java.util.List;
+import com.tangent.practicalassignment.domain.employees.Employees;
+import com.tangent.practicalassignment.presentation.MainActivity;
 
 /**
  * Created by Ans Tech on 3/11/2017.
@@ -22,36 +21,36 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private List<String> list;
-    public Context context;
+    private Employees[] employees;
+    public MainActivity context;
     ViewHolder viewHolder;
     int lastPosition = -1;
 
-    public Adapter(List<String> list, Context context) {
+    public Adapter(Employees[] employees, MainActivity context) {
 
-        this.list = list;
+        this.employees = employees;
         this.context = context;
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return employees.length;
     }
 
     public void onBindViewHolder(final ViewHolder viewHolder,
                                  final int position) {
 
-        viewHolder.textView.setText(list.get(position));
-        Picasso.with(context).load(R.drawable.ic_profile)
-                .into(viewHolder.imageView);
-        viewHolder.textView.setOnClickListener(new
+        viewHolder.tvName.setText(employees[position].getUser().getFirstName() + " " + employees[position].getUser().getLastName());
+        Boolean userActive = employees[position].getUser().getIsActive();
+        if(!userActive){
+            viewHolder.ivStatus.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_status_red));
+        }
+
+        viewHolder.llRow.setOnClickListener(new
         View.OnClickListener() {
            @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),
-                        "OnClick :" + list.get(position),
-                        Toast.LENGTH_SHORT).show();
-
+                context.navigateToUserProfileScreen(employees[position]);
             }
         });
 
@@ -76,14 +75,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textView;
-        public ImageView imageView;
+        public TextView tvName;
+        public ImageView ivProfilePic;
+        public ImageView ivStatus;
+        public LinearLayout llRow;
 
         public ViewHolder(View view) {
             super(view);
 
-            textView = (TextView) view.findViewById(R.id.text);
-            imageView = (ImageView) view.findViewById(R.id.image);
+            tvName = (TextView) view.findViewById(R.id.tv_name);
+            ivProfilePic = (ImageView) view.findViewById(R.id.iv_profile_pic);
+            ivStatus = (ImageView) view.findViewById(R.id.iv_status);
+            llRow = (LinearLayout) view.findViewById(R.id.ll_user_row);
+
         }
     }
 }
