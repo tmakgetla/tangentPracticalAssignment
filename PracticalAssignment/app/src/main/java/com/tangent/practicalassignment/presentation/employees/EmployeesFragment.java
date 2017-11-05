@@ -55,7 +55,7 @@ public class EmployeesFragment extends Fragment implements EmployeestInterface{
     }
 
     private void wireUpViews() {
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.list);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.employees);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
     }
 

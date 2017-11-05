@@ -1,6 +1,5 @@
 package com.tangent.practicalassignment.presentation.employees.adapters;
 
-import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +10,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.domain.employees.Employees;
+import com.tangent.practicalassignment.presentation.MainActivity;
 
 /**
  * Created by Ans Tech on 3/11/2017.
@@ -22,27 +21,27 @@ import com.tangent.practicalassignment.domain.employees.Employees;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private Employees[] list;
-    public Context context;
+    private Employees[] employees;
+    public MainActivity context;
     ViewHolder viewHolder;
     int lastPosition = -1;
 
-    public Adapter(Employees[] list, Context context) {
+    public Adapter(Employees[] employees, MainActivity context) {
 
-        this.list = list;
+        this.employees = employees;
         this.context = context;
     }
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return employees.length;
     }
 
     public void onBindViewHolder(final ViewHolder viewHolder,
                                  final int position) {
 
-        viewHolder.tvName.setText(list[position].getUser().getFirstName() + " " + list[position].getUser().getLastName());
-        Boolean userActive = list[position].getUser().getIsActive();
+        viewHolder.tvName.setText(employees[position].getUser().getFirstName() + " " + employees[position].getUser().getLastName());
+        Boolean userActive = employees[position].getUser().getIsActive();
         if(!userActive){
             viewHolder.ivStatus.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_status_red));
         }
@@ -51,10 +50,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         View.OnClickListener() {
            @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),
-                        "OnClick :" + list[position].getUser().getFirstName() ,
-                        Toast.LENGTH_SHORT).show();
-
+                context.navigateToUserProfileScreen(employees[position]);
             }
         });
 

@@ -10,12 +10,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.tangent.practicalassignment.R;
+import com.tangent.practicalassignment.domain.employees.Employees;
 import com.tangent.practicalassignment.framework.comms.WebUtils;
 import com.tangent.practicalassignment.framework.login.Security;
 import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 import com.tangent.practicalassignment.presentation.home.HomeFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
+import com.tangent.practicalassignment.presentation.userProfile.UserProfileFragment;
 import com.tangent.practicalassignment.utils.AppCache;
 import com.tangent.practicalassignment.utils.AppConstants;
 
@@ -67,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     }
 
     @Override
+    public void navigateToUserProfileScreen(Employees employee){
+        startFragment(UserProfileFragment.newInstance(this,employee), R.id.fragment_container, true);
+    }
+
+    @Override
     public void initConnection(String userName, String password){
         final String varUserName = userName;
         final String varPassword = password;
@@ -113,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     @Override
     public void onBackPressed() {
 
-        if(fragmentManager.getBackStackEntryCount() > 1){
+        if(fragmentManager.getBackStackEntryCount() > 2){
             getSupportFragmentManager().popBackStack();
         } else {
             super.onBackPressed();

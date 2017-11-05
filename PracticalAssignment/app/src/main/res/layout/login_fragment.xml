@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/login_title"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="22dp"
@@ -19,7 +19,7 @@
         android:textStyle="bold" />
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_title"
         android:layout_marginLeft="30dp"
@@ -31,7 +31,7 @@
         android:padding="20dp">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="30dp">
@@ -42,7 +42,7 @@
 
                 <EditText
                     android:id="@+id/et_user_name"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_profile"
                     android:drawableTint="#FF4081"
@@ -57,7 +57,7 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:drawableLeft="@drawable/ic_lock"
@@ -78,7 +78,7 @@
 
             <Button
                 android:id="@+id/btn_sign_in"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="22dp"
                 android:background="#d67601"
