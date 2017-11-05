@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.presentation.MainActivity;
 import com.tangent.practicalassignment.presentation.employees.adapters.Adapter;
+import com.tangent.practicalassignment.presentation.employees.interfaces.EmployeestInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
+import com.tangent.practicalassignment.utils.AppCache;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ import java.util.List;
  * Created by Ans Tech on 31/10/2017.
  */
 
-public class EmployeesFragment extends Fragment {
+public class EmployeesFragment extends Fragment implements EmployeestInterface{
     private MainActivity mainActivity;
     private View rootView;
 
@@ -30,7 +32,6 @@ public class EmployeesFragment extends Fragment {
     }
 
     private RecyclerView mRecyclerView;
-    private List<String> list = new ArrayList<String>();
     Adapter mAdapter;
 
     public static EmployeesFragment newInstance(MainActivity mainActivity) {
@@ -50,14 +51,12 @@ public class EmployeesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         wireUpViews();
         setUpListeners();
+        loadUsers();
     }
 
     private void wireUpViews() {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
-        arrayList();
-        mAdapter = new Adapter(list, mainActivity);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void setUpListeners() {
@@ -69,9 +68,8 @@ public class EmployeesFragment extends Fragment {
         });
     }
 
-    public void arrayList() {
-        for (int i = 0; i < 20; i++) {
-            list.add("This is row of number " + i);
-        }
+    public void loadUsers() {
+        mAdapter = new Adapter(AppCache.employees, mainActivity);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

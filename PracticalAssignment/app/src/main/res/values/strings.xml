@@ -7,4 +7,6 @@
     <string name="reviews">Reviews</string>
     <string name="profile">Profile</string>
     <string name="staticstics">Statistics</string>
+    <string name="label_name">Name : </string>
+    <string name="label_status">Status : </string>
 </resources>

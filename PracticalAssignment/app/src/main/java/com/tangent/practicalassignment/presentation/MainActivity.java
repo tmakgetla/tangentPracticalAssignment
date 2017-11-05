@@ -85,9 +85,23 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                     } else {
                         //Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
                     }
-/*                    WebUtils webUtils = new WebUtils();
-                    webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);*/
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.i("main", e.getMessage());
+                }
+            }
+        }).start();
+    }
 
+    @Override
+    public void getEmployeesDetails(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    WebUtils webUtils = new WebUtils();
+                    webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);
                 }catch (Exception e){
                     e.printStackTrace();
                     Log.i("main", e.getMessage());

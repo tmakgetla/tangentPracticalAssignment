@@ -12,4 +12,5 @@ public interface MainActivityInterface {
     void initConnection(String userName, String password);
     void navigateToEmployeesScreen();
     void navigateToHomeScreen();
+    void getEmployeesDetails();
 }
