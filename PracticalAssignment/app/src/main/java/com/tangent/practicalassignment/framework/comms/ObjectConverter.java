@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.tangent.practicalassignment.domain.employees.Employees;
+import com.tangent.practicalassignment.domain.employees.dto.User;
 import com.tangent.practicalassignment.domain.login.Login;
 
 /**
@@ -32,5 +33,15 @@ public class ObjectConverter {
             Log.i("ObjectConverter", e.toString());
         }
         return employees;
+    }
+
+    public User[] getUserDetails(String responseContent){
+        User user[] = null;
+        try {
+            user = gson.fromJson(responseContent, User[].class);
+        }catch (JsonSyntaxException e){
+            Log.i("ObjectConverter", e.toString());
+        }
+        return user;
     }
 }

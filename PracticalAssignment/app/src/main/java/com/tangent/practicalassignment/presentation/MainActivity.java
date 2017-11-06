@@ -17,6 +17,7 @@ import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 import com.tangent.practicalassignment.presentation.home.HomeFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
+import com.tangent.practicalassignment.presentation.profile.ProfileFragment;
 import com.tangent.practicalassignment.presentation.statistics.StatisticsFragment;
 import com.tangent.practicalassignment.presentation.userProfile.UserProfileFragment;
 import com.tangent.practicalassignment.utils.AppCache;
@@ -80,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     }
 
     @Override
+    public void navigateToProfileScreen(){
+        startFragment(ProfileFragment.newInstance(this), R.id.fragment_container, true);
+    }
+
+    @Override
     public void initConnection(String userName, String password){
         final String varUserName = userName;
         final String varPassword = password;
@@ -114,7 +120,24 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
             public void run() {
                 try {
                     WebUtils webUtils = new WebUtils();
-                    webUtils.getEmployeesDetails(okHttpClient, "http://staging.tangent.tngnt.co/api/employee/", AppCache.session_token);
+                    webUtils.getEmployeesDetails(okHttpClient, AppConstants.EMPLOYEES_URL, AppCache.session_token);
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.i("main", e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    @Override
+    public void getUserDetails(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    WebUtils webUtils = new WebUtils();
+                    webUtils.getUserDetails(okHttpClient, AppConstants.USER_URL, AppCache.session_token);
                 }catch (Exception e){
                     e.printStackTrace();
                     Log.i("main", e.getMessage());
