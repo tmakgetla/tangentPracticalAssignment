@@ -70,7 +70,9 @@ public class HomeFragment extends Fragment {
         llProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mainActivity.getUserDetails();
+                while (AppCache.user == null);
+                mainActivity.navigateToProfileScreen();
             }
         });
         llStatistics.setOnClickListener(new View.OnClickListener() {

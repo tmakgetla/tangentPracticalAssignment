@@ -1,6 +1,7 @@
 package com.tangent.practicalassignment.framework.comms;
 
 import com.tangent.practicalassignment.domain.employees.Employees;
+import com.tangent.practicalassignment.domain.employees.dto.User;
 import com.tangent.practicalassignment.utils.AppCache;
 
 import java.io.IOException;
@@ -24,10 +25,27 @@ public class WebUtils {
         setEmployeesDetails(responseContent);
     }
 
+    public void getUserDetails(OkHttpClient httpClient, String url, String sessionToken) throws Exception {
+        Request request = new Request.Builder().url(url).header("Authorization", "Token " + sessionToken).build();
+        Response response = httpClient.newCall(request).execute();
+        if (!response.isSuccessful()) {
+            throw new IOException("Unexpected code " + response);
+        }
+        String responseContent = response.body().string();
+        setUserDetails(responseContent);
+    }
+
     private void setEmployeesDetails(String responseContent){
         Employees[] employees = objectConverter.getEmployeeDetails(responseContent);
         if(employees != null){
             AppCache.employees = employees;
+        }
+    }
+
+    private void setUserDetails(String responseContent){
+        User[] user = objectConverter.getUserDetails(responseContent);
+        if(user != null){
+            AppCache.user = user;
         }
     }
 
