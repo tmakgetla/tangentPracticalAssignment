@@ -76,7 +76,9 @@ public class HomeFragment extends Fragment {
         llStatistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mainActivity.getEmployeesDetails();
+                while (AppCache.employees == null);
+                mainActivity.navigateToStatisticsScreen();
             }
         });
     }
