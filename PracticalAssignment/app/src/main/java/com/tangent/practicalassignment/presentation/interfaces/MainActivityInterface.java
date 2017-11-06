@@ -16,4 +16,5 @@ public interface MainActivityInterface {
     void navigateToHomeScreen();
     void getEmployeesDetails();
     void navigateToUserProfileScreen(Employees employee);
+    void navigateToStatisticsScreen();
 }

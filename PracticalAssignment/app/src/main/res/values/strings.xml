@@ -9,4 +9,9 @@
     <string name="staticstics">Statistics</string>
     <string name="label_name">Name : </string>
     <string name="label_status">Status : </string>
+    <string name="months">Months</string>
+    <string name="years">Years</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender_count">Gender Count</string>
 </resources>

@@ -17,6 +17,7 @@ import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 import com.tangent.practicalassignment.presentation.home.HomeFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
+import com.tangent.practicalassignment.presentation.statistics.StatisticsFragment;
 import com.tangent.practicalassignment.presentation.userProfile.UserProfileFragment;
 import com.tangent.practicalassignment.utils.AppCache;
 import com.tangent.practicalassignment.utils.AppConstants;
@@ -71,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     @Override
     public void navigateToUserProfileScreen(Employees employee){
         startFragment(UserProfileFragment.newInstance(this,employee), R.id.fragment_container, true);
+    }
+
+    @Override
+    public void navigateToStatisticsScreen(){
+        startFragment(StatisticsFragment.newInstance(this), R.id.fragment_container, true);
     }
 
     @Override
