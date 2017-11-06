@@ -67,9 +67,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                  int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list, null);
+                .inflate(R.layout.item_list, null,false);
 
+        itemLayoutView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         viewHolder = new ViewHolder(itemLayoutView);
+
         return viewHolder;
     }
 
