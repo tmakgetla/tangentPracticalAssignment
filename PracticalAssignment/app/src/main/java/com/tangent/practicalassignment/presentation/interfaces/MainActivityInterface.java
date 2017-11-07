@@ -19,4 +19,5 @@ public interface MainActivityInterface {
     void navigateToStatisticsScreen();
     void getUserDetails();
     void navigateToProfileScreen();
+    void navigateToPositionDataScreen();
 }

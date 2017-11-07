@@ -1,4 +1,4 @@
-package com.tangent.practicalassignment.presentation.employees.adapters;
+package com.tangent.practicalassignment.presentation.positionData.adapters;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -14,19 +14,20 @@ import android.widget.TextView;
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.domain.employees.Employees;
 import com.tangent.practicalassignment.presentation.MainActivity;
+import com.tangent.practicalassignment.presentation.employees.adapters.Adapter;
 
 /**
- * Created by Ans Tech on 3/11/2017.
+ * Created by Ans Tech on 7/11/2017.
  */
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class PositionDataAdapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private Employees[] employees;
     public MainActivity context;
-    ViewHolder viewHolder;
+    Adapter.ViewHolder viewHolder;
     int lastPosition = -1;
 
-    public Adapter(Employees[] employees, MainActivity context) {
+    public PositionDataAdapter(Employees[] employees, MainActivity context) {
 
         this.employees = employees;
         this.context = context;
@@ -37,38 +38,31 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return employees.length;
     }
 
-    public void onBindViewHolder(final ViewHolder viewHolder,
+    public void onBindViewHolder(final Adapter.ViewHolder viewHolder,
                                  final int position) {
 
         viewHolder.tvName.setText(employees[position].getUser().getFirstName() + " " + employees[position].getUser().getLastName());
         Boolean userActive = employees[position].getUser().getIsActive();
-        if (!userActive) {
+        if(!userActive){
             viewHolder.ivStatus.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_status_red));
         }
 
-        viewHolder.llRow.setOnClickListener(new
-                                                    View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            context.navigateToUserProfileScreen(employees[position]);
-                                                        }
-                                                    });
-
-
-        Animation animation = AnimationUtils.loadAnimation(context,
-                R.anim.up_from_bottom);
-        viewHolder.itemView.startAnimation(animation);
-        lastPosition = position;
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(context,
+                    R.anim.up_from_bottom);
+            viewHolder.itemView.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                  int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list, null, false);
+                .inflate(R.layout.item_list, null,false);
 
         itemLayoutView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
-        viewHolder = new ViewHolder(itemLayoutView);
+        viewHolder = new Adapter.ViewHolder(itemLayoutView);
 
         return viewHolder;
     }
