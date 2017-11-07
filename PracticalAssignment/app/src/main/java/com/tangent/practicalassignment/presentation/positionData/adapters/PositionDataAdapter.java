@@ -40,12 +40,6 @@ public class PositionDataAdapter extends RecyclerView.Adapter<PositionDataAdapte
     public void onBindViewHolder(final PositionViewHolder viewHolder,
                                  final int position) {
 
-/*        viewHolder.tvName.setText(positionStats[position].getUser().getFirstName() + " " + positionStats[position].getUser().getLastName());
-        Boolean userActive = positionStats[position].getUser().getIsActive();
-        if(!userActive){
-            viewHolder.ivStatus.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_status_red));
-        }*/
-
         viewHolder.tvPositionTitle.setText(positionStats[position].getTitle());
         viewHolder.tvPositionJuniorCount.setText(String.valueOf(positionStats[position].getJuniorCount()));
         viewHolder.tvPositionSeniorCount.setText(String.valueOf(positionStats[position].getSeniorCount()));

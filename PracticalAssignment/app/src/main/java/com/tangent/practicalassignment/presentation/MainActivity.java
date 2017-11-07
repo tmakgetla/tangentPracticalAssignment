@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigateToLoginScreen();
-        //init();
     }
 
     @Override
@@ -108,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                     if(okHttpClient != null){
                         navigateToHomeScreen();
                     } else {
-                        //Toast.makeText(MainActivity.this, "Incorrect user-name or password!", Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
                     e.printStackTrace();
