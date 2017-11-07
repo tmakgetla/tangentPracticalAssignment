@@ -64,7 +64,9 @@ public class HomeFragment extends Fragment {
         llPostionData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mainActivity.getEmployeesDetails();
+                while (AppCache.employees == null);
+                mainActivity.navigateToPositionDataScreen();
             }
         });
         llProfile.setOnClickListener(new View.OnClickListener() {

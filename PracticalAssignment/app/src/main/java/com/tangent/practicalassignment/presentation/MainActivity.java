@@ -17,6 +17,7 @@ import com.tangent.practicalassignment.presentation.employees.EmployeesFragment;
 import com.tangent.practicalassignment.presentation.home.HomeFragment;
 import com.tangent.practicalassignment.presentation.interfaces.MainActivityInterface;
 import com.tangent.practicalassignment.presentation.login.LoginFragment;
+import com.tangent.practicalassignment.presentation.positionData.PositionDataFragment;
 import com.tangent.practicalassignment.presentation.profile.ProfileFragment;
 import com.tangent.practicalassignment.presentation.statistics.StatisticsFragment;
 import com.tangent.practicalassignment.presentation.userProfile.UserProfileFragment;
@@ -86,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     }
 
     @Override
+    public void navigateToPositionDataScreen(){
+        startFragment(PositionDataFragment.newInstance(this), R.id.fragment_container, true);
+    }
+
+    @Override
     public void initConnection(String userName, String password){
         final String varUserName = userName;
         final String varPassword = password;
@@ -149,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     @Override
     public void onBackPressed() {
 
-        if(fragmentManager.getBackStackEntryCount() > 2){
+        if(fragmentManager.getBackStackEntryCount() > 1){
             getSupportFragmentManager().popBackStack();
         } else {
             super.onBackPressed();

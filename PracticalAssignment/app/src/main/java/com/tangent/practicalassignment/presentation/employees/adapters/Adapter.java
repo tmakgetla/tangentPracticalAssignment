@@ -42,32 +42,30 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         viewHolder.tvName.setText(employees[position].getUser().getFirstName() + " " + employees[position].getUser().getLastName());
         Boolean userActive = employees[position].getUser().getIsActive();
-        if(!userActive){
+        if (!userActive) {
             viewHolder.ivStatus.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_status_red));
         }
 
         viewHolder.llRow.setOnClickListener(new
-        View.OnClickListener() {
-           @Override
-            public void onClick(View v) {
-                context.navigateToUserProfileScreen(employees[position]);
-            }
-        });
+                                                    View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            context.navigateToUserProfileScreen(employees[position]);
+                                                        }
+                                                    });
 
-        if (position > lastPosition) {
 
-            Animation animation = AnimationUtils.loadAnimation(context,
-                    R.anim.up_from_bottom);
-            viewHolder.itemView.startAnimation(animation);
-            lastPosition = position;
-        }
+        Animation animation = AnimationUtils.loadAnimation(context,
+                R.anim.up_from_bottom);
+        viewHolder.itemView.startAnimation(animation);
+        lastPosition = position;
     }
 
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                  int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list, null,false);
+                .inflate(R.layout.item_list, null, false);
 
         itemLayoutView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         viewHolder = new ViewHolder(itemLayoutView);
