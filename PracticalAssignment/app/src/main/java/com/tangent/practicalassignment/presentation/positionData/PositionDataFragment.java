@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 import com.tangent.practicalassignment.R;
 import com.tangent.practicalassignment.domain.employees.Employees;
+import com.tangent.practicalassignment.domain.employees.dto.PositionStats;
 import com.tangent.practicalassignment.domain.employees.dto.User;
 import com.tangent.practicalassignment.presentation.MainActivity;
 import com.tangent.practicalassignment.presentation.employees.adapters.Adapter;
 import com.tangent.practicalassignment.presentation.positionData.adapters.PositionDataAdapter;
 import com.tangent.practicalassignment.presentation.profile.ProfileFragment;
 import com.tangent.practicalassignment.utils.AppCache;
+import com.tangent.practicalassignment.utils.Calculator;
 
 /**
  * Created by Ans Tech on 7/11/2017.
@@ -61,7 +63,8 @@ public class PositionDataFragment extends Fragment {
     }
 
     public void loadUsers() {
-        mAdapter = new PositionDataAdapter(AppCache.employees, mainActivity);
+        PositionStats[] positionStats = Calculator.calculatePositionDataStats(AppCache.employees);
+        mAdapter = new PositionDataAdapter(positionStats, mainActivity);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

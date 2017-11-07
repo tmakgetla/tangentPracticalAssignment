@@ -14,4 +14,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="gender_count">Gender Count</string>
+    <string name="total_count">Total Count : </string>
+    <string name="junior_count">Junior Count : </string>
+    <string name="senior_count">Senior Count : </string>
 </resources>
